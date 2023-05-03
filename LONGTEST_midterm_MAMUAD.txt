@@ -1,0 +1,54 @@
+DROP DATABASE studentgradeRay;
+CREATE DATABASE studentgradeRay;
+USE studentgradeRay;
+
+CREATE TABLE Student(
+	StudNO varchar(6) NOT NULL,
+	StudFName varchar(20),
+	StudLName varchar(20),
+    major varchar(20),
+	gender varchar(1),
+	HomeAddress varchar(50),
+	PRIMARY KEY (StudNo)
+);
+
+CREATE TABLE Subject(
+	SubjectCode varchar(10) NOT NULL,
+	SubjectDesc varchar(20),
+    PRIMARY KEY (SubjectCode)
+);
+
+CREATE TABLE Grade(
+    StudNO varchar(6),
+	SubjectCode varchar(10),
+	Grade float,
+    CONSTRAINT FK_studcode FOREIGN KEY (StudNO)
+	REFERENCES Student(StudNO),
+    CONSTRAINT FK_subjcode FOREIGN KEY (SubjectCode)
+	REFERENCES Subject(SubjectCode)
+);
+
+INSERT INTO Student (StudNO, StudFName, StudLName, major, gender, HomeAddress)
+VALUE ('S-101', 'Ana', 'Cruz', 'ECE', 'F', 'Malolos, Bulacan'),
+('S-102', 'Hazel', 'Ponce', 'COE', 'F', 'Plaridel, Bulacan'),
+('S-103', 'Cristov', 'Concio', 'ECE', 'M', 'Malolos, Bulacan'),
+('S-104', 'Aris', 'Clavio', 'COE', 'M', 'Pulilan, Bulacan'),
+('S-105', 'Honey', 'Pelayo', 'COE', 'F', 'Plaridel, Bulacan'),
+('S-106', 'Carrie', 'Abao', 'ECE', 'F', 'Pulilan, Bulacan');
+
+INSERT INTO Subject (SubjectCode, SubjectDesc)
+VALUE ('CHEM 123', 'Chemistry'),
+('MATH 122', 'Trigonometry'),
+('MATH 123', 'Algebra');
+
+INSERT INTO Grade (StudNO, SubjectCode, Grade)
+VALUE ('S-101', 'CHEM 123', 2.00), ('S-101', 'MATH 122', 1.00),
+('S-101', 'MATH 123', 1.50), ('S-102', 'CHEM 123', 1.75),
+('S-102', 'MATH 122', 1.25), ('S-102', 'MATH 123', 1.50),
+('S-103', 'CHEM 123', 2.00), ('S-103', 'MATH 122', 1.75),
+('S-103', 'MATH 123', 1.25), ('S-104', 'CHEM 123', 1.25),
+('S-104', 'MATH 122', 2.25), ('S-104', 'MATH 123', 2.50),
+('S-105', 'CHEM 123', 1.00), ('S-105', 'MATH 122', 1.25),
+('S-105', 'MATH 123', 2.50), ('S-106', 'CHEM 123', 1.25),
+('S-106', 'MATH 122', 1.50), ('S-106', 'MATH 123', 1.75);
+
