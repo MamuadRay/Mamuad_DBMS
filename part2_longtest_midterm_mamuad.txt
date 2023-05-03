@@ -1,0 +1,23 @@
+midterm part2
+
+
+1.
+
+SELECT CONCAT(studfname, " ", studlname) AS Fullname, student.HomeAddress
+FROM Student
+WHERE major = 'ECE' AND gender = 'F' AND HomeAddress = 'Malolos, Bulacan';
+
+2.
+
+SELECT CONCAT(studlname, ", ", studfname) AS Fullname, student.major, subject.subjectDesc AS SubjectName, grade.Grade
+FROM ((student
+INNER JOIN Grade ON student.studNO = Grade.studNO)
+INNER JOIN Subject ON grade.subjectCode = subject.subjectCode)
+WHERE Subject.subjectDesc = 'MATH 122' AND Grade.grade <=2;
+
+3.
+
+SELECT CONCAT(studlname, ", ", studfname) AS Fullname, student.gender, student.HomeAddress, grade.SubjectCode, grade.Grade
+FROM (Student
+INNER JOIN grade ON student.StudNO = grade.StudNO)
+WHERE major = 'COE';
