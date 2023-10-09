@@ -1,0 +1,79 @@
+using System;
+
+class School{
+    public string school_name, school_id;
+}
+
+class Course : School{
+    public string course_name;
+}
+
+class Subject : Course{
+    public string subject_code, subject_name;
+}
+
+class Student : Subject{
+    public string name;
+    public int age;
+    
+    public string Information(){
+        return "Name: "+ name +" | Age: "+ age +" | School: "+ school_name 
+        +" | Age: "+ school_id +" | Course: "+ course_name 
+        +" | Subject: "+ subject_name +" | SCode: "+ subject_code;
+    }
+}
+
+class StudentInfo {
+  static void Main() {
+    Student st1 = new Student();
+    st1.name = "Mamuad, Ray";
+    st1.age = 25;
+    st1.school_name = "Eastwoods";
+    st1.school_id = "19-0178";
+    st1.course_name = "BSCS";
+    st1.subject_name = "OOPL";
+    st1.subject_code = "00PL113";
+    
+    Student st2 = new Student();
+    st2.name = "Blas, John";
+    st2.age = 24;
+    st2.school_name = "BPSU";
+    st2.school_id = "20-0029";
+    st2.course_name = "BSIT";
+    st2.subject_name = "Calculus";
+    st2.subject_code = "MATH311";
+    
+    Student st3 = new Student();
+    st3.name = "Dador, Ryan";
+    st3.age = 23;
+    st3.school_name = "ACLC";
+    st3.school_id = "21-0987";
+    st3.course_name = "BSCOE";
+    st3.subject_name = "FILDIS";
+    st3.subject_code = "FIL211";
+    
+    Student st4 = new Student();
+    st4.name = "Eusebio, Herlyn";
+    st4.age = 22;
+    st4.school_name = "TDEL";
+    st4.school_id = "22-0001";
+    st4.course_name = "BSIT";
+    st4.subject_name = "Purposive Comm";
+    st4.subject_code = "ENG211";
+    
+    Student st5 = new Student();
+    st5.name = "Banzuela, JC";
+    st5.age = 21;
+    st5.school_name = "APCAS";
+    st5.course_name = "BSA";
+    st1.school_id = "23-6969";
+    st5.subject_name = "Psycology";
+    st5.subject_code = "PSYC111";
+    
+    Console.WriteLine(st1.Information());
+    Console.WriteLine(st2.Information());
+    Console.WriteLine(st3.Information());
+    Console.WriteLine(st4.Information());
+    Console.WriteLine(st5.Information());
+  }
+}
