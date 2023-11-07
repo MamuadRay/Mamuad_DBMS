@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace bidding_system{
+
+    class Items {
+        public int price, quantity;
+        public string status;
+    }
+
+    class Program {
+        static void Main(string[] args){
+
+            string[] item1 = new string[3];
+
+            Console.WriteLine("-------SELLER-------");
+            Console.WriteLine("Put items on the shelves");
+            Console.WriteLine();
+            Console.WriteLine("ITEM #1");
+            Console.WriteLine("Input the ITEM Name: ");
+            item1[0] = Console.ReadLine();
+            Console.WriteLine("Input the ITEM Price: ");
+            item1[1] = Console.ReadLine();
+            
+
+            Console.WriteLine("-------ITEMS-------");
+            Console.WriteLine();
+            Console.WriteLine("ITEM #1");
+            Console.WriteLine("Name: "+item1[0]);
+            Console.WriteLine("Price: " + item1[1]);
+            
+
+            Console.ReadKey();
+        }
+    }
+}
