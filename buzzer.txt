@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="first"></p>
+
+    <script>
+        // Implement a RESET using the `r` key.
+        // Pag nakapindot na, hindi na pwede unless i-reset.
+ 
+        document.addEventListener('keyup', function(e) {
+            console.log(e);
+            const target = document.getElementById('first');
+            if(e.key == 'a') {
+                target.innerText = 'Nauna si A';
+                target.style.backgroundColor = 'red';
+                
+            }
+            else if(e.key == 'l') {
+                target.innerText = 'Nauna si L';
+                target.style.backgroundColor = 'blue';
+            }
+            else if(e.key == 'r') {
+                target.innerText = '';
+            }
+ 
+ 
+        });
+    </script>
+</body>
+</html>
