@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COOKIE-CLICKER(Mamuad)</title>
+</head>
+<body style="background-color: burlywood; margin: 0%; padding: 0%;">
+    <div style="text-align: center; font-size: 70px">
+        <h1 id="amount">0</h1>
+    </div>
+    <div style="text-align: center;">
+        <button id="button" onclick="increment()" style="background:#3630a3;color:white; top:35%; margin: 1%; padding: 5%; border-radius:50px; font-size: 30px">INCREASE</button>
+        <button id="button" onclick="reset()" style="background:#3630a3;color:white; top:35%; margin: 1%; padding: 5%; border-radius:50px; font-size: 30px">RESET</button>
+    </div>
+
+    <script>
+        let click = 0;
+
+        function increment(){
+            click++;
+            document.getElementById('amount').innerHTML = click;
+            localStorage.setItem("save", click);
+        }
+        click = localStorage.getItem("save", click);
+
+        function reset(){
+            document.getElementById('amount').innerHTML = 0;
+            localStorage.clear();
+            click = 0;
+        }
+        
+    </script>
+</body>
+</html>

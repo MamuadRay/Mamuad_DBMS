@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%;">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BUZZER</title>
+</head>
+ 
+<body>
+    <h1>Keybinding</h1>
+ 
+    <h1>Team A Settings</h1>
+    <label for="key1">Key 1: </label>
+    <input type="text" id="key1" onkeyup="assignKeybind(event)"/>
+
+    <label for="team1">Team: </label>
+    <input type="text" id="team1" />
+
+    <h1>Team B Settings</h1>
+    <label for="key2">Key 2: </label>
+    <input type="text" id="key2" onkeyup="assignKeybind2(event)"/>
+ 
+    <label for="team2">Team: </label>
+    <input type="text" id="team2" />
+ 
+    <button onclick="save()">Save</button>
+    <hr>
+    <div id="container">
+        <h1 id="teamName"></h1>
+    </div>
+ 
+    <hr>
+    <script>
+        if(localStorage.getItem('teamAName45') != null) {
+            teamAName = localStorage.getItem('teamAName');
+            teamBName = localStorage.getItem('teamBName');
+            teamAKeybind = localStorage.getItem('keyA');
+            teamBKeybind = localStorage.getItem('keyA');
+            saved = !saved;
+        }
+
+
+        let napindot = false;
+        let saved = false;
+        let teamAKeybind,
+            teamAName,
+            teamBKeybind,
+            teamBName;
+ 
+        document.addEventListener('keyup', function(e) {
+            if(saved) {
+                if(e.key == teamAKeybind && !napindot) {
+                    document.getElementById('container').style.backgroundColor = 'blue';
+                    document.getElementById('teamName').innerText = `Team ${teamAName}`;
+                    napindot = true;
+                }
+                else if(e.key == teamBKeybind && !napindot) {
+                    document.getElementById('container').style.backgroundColor = 'red';
+                    document.getElementById('teamName').innerText = `Team ${teamBName}`;
+                    napindot = true;
+                }
+                else if(e.key == 'r') {
+                    document.getElementById('container').style.backgroundColor = '#FFF';
+                    document.getElementById('teamName').innerText = '';
+                    napindot = false;
+                }
+            }
+        });
+ 
+        function save() {
+            saved = !saved;
+            teamAName = document.getElementById('team1').value;
+            teamBName = document.getElementById('team2').value;
+            localStorage.setItem('teamAName', teamAName);
+            localStorage.setItem('teamBName', teamBName);
+            localStorage.setItem('keyA', teamAKeybind);
+            localStorage.setItem('keyB', teamBKeybind);
+        }
+ 
+        function assignKeybind(ev) {
+            teamAKeybind = ev.key;
+        }
+
+        function assignKeybind2(ev) {
+            teamBKeybind = ev.key;
+        }
+    </script>
+</body>
+ 
+</html>
