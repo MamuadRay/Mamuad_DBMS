@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COLOR-PICKER(Mamuad)</title>
+</head>
+<body id="backgroudcolor">
+    <div style="background-color: black; color: white; text-align: center;">
+        <h1 >Pick a Color</h1>
+    </div>
+    <div style="text-align: center;">
+        <input type="color" id="colorpicker" onchange="cchange()">
+    </div>
+    
+    <script>
+
+        function cchange() {
+            let colorpicked = document.getElementById('colorpicker').value;
+            document.getElementById('backgroudcolor').style.backgroundColor = colorpicked;
+        }
+    </script>
+</body>
+</html>
