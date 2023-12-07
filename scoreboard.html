@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>SCOREBOARD_MIDTERM</title>
+</head>
+<body style="margin: 10%; background-color: gray;">
+    <div class="row">
+        <div class="col-lg-6" style="text-align: center;">
+            <div id="t1">
+                <div >
+                    <h1 id="name1">TEAM 1</h1>
+                </div>
+                <div style="margin: 16px;">
+                    <h1 id="score1" >0</h1>
+                </div>
+            </div>
+            <button id="add1" onclick="addition1()" style="padding: 20px; background-color: blue; color: white;">+</button>
+            <button id="minus1" onclick="subtraction1()" style="padding: 20px; background-color: red; color: white;">-</button>
+        </div>
+        <div class="col-lg-6" style="text-align: center;">
+            <div id="t2">
+                <div>
+                    <h1 id="name2">TEAM 2</h1>
+                </div>
+                <div style="margin: 16px;">
+                    <h1 id="score2" >0</h1>
+                </div>
+            </div>
+            <button id="add2" onclick="addition2()" style="padding: 20px; background-color: blue; color: white;">+</button>
+            <button id="minus2" onclick="subtraction2()" style="padding: 20px; background-color: red; color: white;">-</button>
+        </div>
+        <div style="text-align: center; margin: 20px;">
+            <div><h3>Press ENTER for result</h3></div>
+            <div><h3>Press R to reset</h3></div>
+        </div>
+    </div>
+
+    <script>
+        // ayaw maload ng storage 
+        // if(localStorage.setItem('T1score', sscore1) != null) {
+        //     document.getElementById('score1').innerHTML = localStorage.getItem('T1score', sscore1) ;
+        //     document.getElementById('score2').innerHTML = localStorage.getItem('T2score', sscore2) ;
+        // }
+
+        document.addEventListener('keyup', (event) => {
+            
+            if (event.key === 'Enter') {
+                
+                if (sscore1 > sscore2) {
+                    document.getElementById('t1').style.backgroundColor = 'yellow';
+                    document.getElementById('name1').innerHTML = 'TEAM 1 WINNER';
+                }
+                if (sscore1 < sscore2){
+                    document.getElementById('t2').style.backgroundColor = 'yellow';
+                    document.getElementById('name2').innerHTML = 'TEAM 2 WINNER';
+                }
+                document.getElementById("add1").disabled = true;
+                document.getElementById("minus1").disabled = true;
+                document.getElementById("add2").disabled = true;
+                document.getElementById("minus2").disabled = true;
+            }
+            if(event.key === 'r') {
+                localStorage.clear();
+                sscore1 = 0;
+                sscore2 = 0;
+                document.getElementById('score1').innerHTML = 0;
+                document.getElementById('score2').innerHTML = 0;
+                document.getElementById("add1").disabled = false;
+                document.getElementById("minus1").disabled = false;
+                document.getElementById("add2").disabled = false;
+                document.getElementById("minus2").disabled = false;
+                document.getElementById('t1').style.backgroundColor = 'gray';
+                document.getElementById('t2').style.backgroundColor = 'gray';
+            }
+            
+        });
+
+        let sscore1 = 0;
+        let sscore2 = 0;
+
+        function addition1() {
+            sscore1++
+            document.getElementById('score1').innerHTML = sscore1
+            save();
+        }
+
+        function subtraction1() {
+            sscore1--
+            document.getElementById('score1').innerHTML = sscore1
+            save();
+        }
+
+        function addition2() {
+            sscore2++
+            document.getElementById('score2').innerHTML = sscore2
+            save();
+        }
+
+        function subtraction2() {
+            sscore2--
+            document.getElementById('score2').innerHTML = sscore2
+            save();
+        }
+
+        function save() {
+            localStorage.setItem('T1score', sscore1);
+            localStorage.setItem('T2score', sscore2);
+        }
+
+    </script>
+</body>
+</html>
