@@ -54,9 +54,9 @@ class ATM_Transactions {
     public void modifiers(){}
 }
 
-class ProgramRayMidterm {
+class Program {
   static void Main() {
     
-    Console.WriteLine("...");
+    Console.WriteLine("k.dob");
   }
 }
