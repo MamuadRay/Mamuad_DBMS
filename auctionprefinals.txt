@@ -1,0 +1,93 @@
+package mamuad_auction.system;
+import java.util.Scanner;
+
+
+public class Mamuad_AuctionSystem {
+
+    
+    public static void main(String[] args) {
+        System.out.println("AUCTION SYSTEM");
+
+        Scanner choice = new Scanner(System.in);
+        int achoice;
+
+        System.out.println("Sell something on the auction --- ENTER 1 ");
+        System.out.println("Close the Auction Program ------- ENTER 2 ");
+        System.out.print("Choice: ");
+        achoice = choice.nextInt();
+
+        if (achoice == 1) {
+            Scanner sellerName = new Scanner(System.in);
+            Scanner sellerItem = new Scanner(System.in);
+            Scanner sellerPrice = new Scanner(System.in);
+            String sellerrName;
+            String sellerrItem;
+            int sellerrPrice;
+            
+            System.out.println("Enter Item Details");
+            System.out.print("Seller Name: ");
+            sellerrName = sellerName.nextLine();
+            System.out.print("Item Name: ");
+            sellerrItem = sellerItem.nextLine();
+            System.out.print("Item Price: ");
+            sellerrPrice = sellerPrice.nextInt();
+
+            System.out.println("Thank you for trusting our Auction Shop");
+            System.out.println(" ");
+            System.out.println(" ");
+            System.out.println(" ");
+            System.out.println("AUCTION SHOP");
+
+            Scanner buychoice = new Scanner(System.in);
+            int buyerchoice;
+            
+            System.out.println("Items for sale");
+            System.out.println("First Item: "+ sellerrItem + " $"+ sellerrPrice + " from " + sellerrName);
+            System.out.println("Buy something on the auction -- ENTER 1 ");
+            System.out.println("Close the Auction Shop -------- ENTER 2 ");
+            buyerchoice = buychoice.nextInt();
+            
+            if (buyerchoice == 1) {
+                System.out.println("Item Info: " + "\n " + "Item Name: " + sellerrItem + "\n" + "\n" + "Price: " + sellerrPrice + "Owner: " + sellerrName);
+
+                Scanner buyName1 = new Scanner(System.in);
+                String buyerName1;
+                Scanner buyName2 = new Scanner(System.in);
+                String buyerName2;
+                Scanner myPrice1 = new Scanner(System.in);
+                int setPrice1;
+                Scanner myPrice2 = new Scanner(System.in);
+                int setPrice2;
+
+                System.out.print("Buyer Name: ");
+                buyerName1 = buyName1.nextLine();
+                System.out.print("Place your Bid: ");
+                setPrice1 = myPrice1.nextInt();
+                System.out.print("Buyer Name: ");
+                buyerName2 = buyName2.nextLine();
+                System.out.print("Place your Bid: ");
+                setPrice2 = myPrice2.nextInt();
+                System.out.print(" ");
+                System.out.print("Place your Bid agAin "+ buyerName1 +" : ");
+                setPrice1 = myPrice1.nextInt();
+                System.out.print("Place your Bid agAin "+ buyerName2 +" : ");
+                setPrice2 = myPrice2.nextInt();
+                System.out.print(" ");
+                System.out.print("The Auction is close");                                
+
+                if (setPrice1 > setPrice2) {
+                    System.out.println("SOLD!!! to "+ buyerName1 +" Thank you for your patronage");
+                } else if (setPrice2 > setPrice1) {
+                    System.out.println("SOLD!!! to "+ buyerName2 +" Thank you for your patronage");
+                } else {
+                    System.out.println("Null");
+                }
+            } else {
+                System.out.println("Ok");
+            }
+        } else {
+            System.out.println("Close the program.");
+        }
+    }
+    
+}
