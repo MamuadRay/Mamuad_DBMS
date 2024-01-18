@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guesing The Number (Mamuad)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="background-color: aquamarine;">
+    <div id="top" class="top" style="text-align: center;  ">
+        <div id="1st" class="life">.</div>
+        <div id="2nd" class="life">.</div>
+        <div id="3rd" class="life">.</div>
+        <div id="4th" class="life">.</div>
+    </div>
+    <div id="mid" style="text-align: center;">
+        <h1 id="score">GUESS 1-100</h1>
+    </div>
+    <div id="bottom" style="text-align: center;">
+        <input type="number" id="uinput" class="in">
+    </div>
+
+    <script>
+        let rando = Math.floor((Math.random() * 100) + 1);
+        let life1 = 5;
+        
+        document.addEventListener('keyup', (event) => {
+            if (event.key === 'Enter') {
+                let nguess = document.getElementById('uinput').value;
+                
+                if (nguess > rando){
+                    life1--
+                    document.getElementById('score').innerHTML = 'LOWER';
+                    health();
+                    
+                } else if (nguess < rando){
+                    life1--
+                    document.getElementById('score').innerHTML = 'HIGHER';
+                    health();
+                    
+                } else if(nguess == rando){
+                    document.getElementById('score').innerHTML = 'CORRECT';
+                    
+                }
+                
+            }
+        });
+        
+        function health() {
+            if (life1 == 4){
+                document.getElementById('4th').style.backgroundColor = 'black';
+            } else if (life1 == 3){
+                document.getElementById('3rd').style.backgroundColor = 'black';
+            } else if (life1 == 2){
+                document.getElementById('2nd').style.backgroundColor = 'black';
+            } else if (life1 == 1){
+                document.getElementById('1st').style.backgroundColor = 'black';
+                document.getElementById('score').innerHTML = 'YOU LOSE';
+            }
+        }
+
+    </script>
+</body>
+</html>
+
+.life {
+    background-color: lightcoral;
+}
+
+.top {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    margin: 50px;
+    column-gap: 50px;
+}
+
+.life {
+    width: 75%;
+    padding: auto;
+    margin: auto;
+    height: 150px;
+}
+
+.in {
+    border: 2px solid red;
+    border-radius: 4px;
+    background-color: #3CBC8D;
+    color: black;
+    height: 40px;
+    width: 25%;
+    font-size: large;
+    text-align: center;
+}
